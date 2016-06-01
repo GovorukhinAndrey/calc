@@ -1,0 +1,145 @@
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.wrap_calculator{
+	padding: 50px;
+	width: 740px;
+}
+
+#calculator{
+	float: right;
+	width: 350px;
+}
+.wrap_calculator h3{
+	color: rgb(234, 91, 25);
+	border-bottom: 1px dashed #2a2726;
+	padding-bottom: 10px;
+
+}
+.wrap_calculator label{
+	color: #49494d;
+	font-size: 16px;
+}
+.wrap_calculator .cursor{
+	cursor: pointer;
+	display: inline-block;
+}
+.param{
+	position: relative;
+}
+.param label{
+	display: block;
+	padding-bottom: 10px;
+}
+.param input{
+	display: block;
+	width: 100%;
+	border-radius: 5px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 1px solid #7a7a81;
+	color: #474747;
+	padding: 3px 5px;
+	font-size: 20px;
+}
+.param span{
+	font-size: 14px;
+	color: #a11515
+}
+.width {
+	float: left;
+	width: 45%;
+}
+.height {
+	float: right;
+	width: 45%;
+}
+.installation{
+	position: relative;
+	border: none;
+}
+.installation h3{
+	border: none;	
+}
+.installation input{
+	position: absolute;
+	top: 4px;
+	left: 115px;
+}
+.number_wrap{
+	position: relative;
+}
+.number_wrap h3{
+	border: none;	
+}
+.number_wrap .number{
+	position: absolute;
+	top: 1px;
+	left: 160px;	
+}
+.number input{
+	border-radius: 5px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 1px solid #7a7a81;
+	color: #474747;
+	padding: 3px 5px;
+	font-size: 20px;
+	text-align: center;
+}
+.number{
+	position: relative;
+}
+.number .minus{
+	top: 0;
+	left: -40px;
+}
+.number .plus{
+	top: 0;
+	right: -40px;
+	line-height: 26px;
+}
+.number span{
+	border-radius: 5px;
+	border: 1px solid #a9a9b1;
+	color: #474747;	
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	position: absolute;
+	line-height: 24px;
+	font-size: 24px;
+}
+.number span:hover, .number span:focus {
+	border: 1px solid #4a4a4a;
+	color: #1A1919;
+}
+.number span:active{
+	box-shadow: 0 0 4px rgba(51, 49, 110, 0.5)	
+}
+.resultat {
+	position: relative;
+	border: none;
+}
+.resultat h3{
+	border: none;
+	margin-top: 50px;	
+}
+.resultat .wrap_result{
+	position: absolute;
+	top: -8px;
+	left: 125px;
+}
+.resultat .wrap_result span{
+	font-size: 32px;
+	color: #E60707;
+	font-weight: bold;
+}
+.resultat .wrap_result{
+	font-size: 32px;
+	color: #E60707;
+	font-weight: bold;	
+}

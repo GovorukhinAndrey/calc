@@ -6,59 +6,93 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	
-<div id="calculator">
-		<h3>Задайте параметры</h3>
-		<label for="width"> ширина, см</label>
-		<input id="width" name="width" type="text" maxlength="4" value="2000">
-		<span class="input-error width-error"></span>
 
-		<label for="height">высота, см</label>
-		<input id="height" name="height" type="text" maxlength="4" value="1000">
-		<span class="input-error height-error"></span>
+	<h2>Расчет стоимости Москитных сеток</h2>
+	<div class="wrap_calculator">
+		<div id="calculator" class="clearfix">
 
-		<h3>Выберете тип сетки</h3>
-		<label for="bordered">рамочная</label>
-		<input id="bordered" value="bordered" name="netType" type="radio" checked>
-		<label for="expanding">раздвижная</label>
-		<input id="expanding" value="expanding" name="netType" type="radio">
 
-		<h3>Выберете цвет рамки</h3>
-		<label for="whiteColor">белый</label>
-		<input id="whiteColor" value="white" name="netColor" type="radio" checked>
-		<label for="brownColor">коричневый</label>
-		<input id="brownColor" value="brown" name="netColor" type="radio">
+			<div class="param clearfix">
+				<h3>Задайте параметры:</h3>
+				<div class="width">
+					<label for="width"> Ширина, см</label>
+					<input id="width" name="width" type="text" maxlength="3" value="100">
+					<span class="input-error width-error"></span>
+				</div>
+				<div class="height">
+					<label for="height">Высота, см</label>
+					<input id="height" name="height" type="text" maxlength="3" value="100">
+					<span class="input-error height-error"></span>
+				</div>
+			</div>
 
-		<h3>Выберете полотно</h3>
-		<label for="fiberglass">Фиберглас</label>
-		<input id="fiberglass" value="fiberglass" name="canvasType" type="radio" checked>
-		<label for="anticat">Антикошка</label>
-		<input id="anticat" value="anticat" name="canvasType" type="radio">
-		<label for="photoprint">Фотопечать</label>
-		<input id="photoPrint" value="photoPrint" name="canvasType" type="radio">
+			
+			<div class="type">
+				<h3>Выберете тип сетки:</h3>
+				<input id="bordered" class="cursor" value="bordered" name="netType" type="radio" checked>
+				<label for="bordered">Рамочная</label>
+				<input id="expanding" class="cursor" value="expanding" name="netType" type="radio">
+				<label for="expanding">Раздвижная</label>
+			</div>
 
-		<h3>Выберете комплектующие</h3>
-		<label for="plastic">пластиковые уголки, ручки, крепежи</label>
-		<input id="plastic" value="0" name="complect" type="radio" checked>
-		<label for="metal">металлические уголки, ручки, крепежи.</label>
-		<input id="metal" value="100" name="complect" type="radio">	
 
-		<h3>установка</h3>
-		<input id="installation"  name="installation" type="checkbox" checked>	
+			<div class="color">
+				<h3>Выберете цвет рамки:</h3>
+				<input id="whiteColor" class="cursor" value="white" name="netColor" type="radio" checked>
+				<label for="whiteColor">Белый</label>
+				<input id="brownColor" class="cursor" value="brown" name="netColor" type="radio">
+				<label for="brownColor">Коричневый:</label>
+			</div>
 
-		<h3>Кол-во</h3>
-		<div class="number">
-			<span class="minus">-</span>
-			<input id="quantity" type="text" value="1" size="5"/>
-			<span class="plus">+</span>
+			
+			<div class="polotno">
+				<h3>Выберете полотно:</h3>
+				<input id="fiberglass" class="cursor" value="fiberglass" name="canvasType" type="radio" checked>
+				<label for="fiberglass">Фиберглас</label>
+				<input id="anticat" class="cursor" value="anticat" name="canvasType" type="radio">
+				<label for="anticat">Антикошка</label>				
+				<input id="photoPrint" class="cursor" value="photoPrint" name="canvasType" type="radio">
+				<label for="photoPrint">Фотопечать</label>
+			</div>
+
+
+			<div class="complect">
+				<h3>Выберете комплектующие:</h3>
+				<div class="plastic">
+					<input id="plastic" class="cursor" value="0" name="complect" type="radio" checked>
+					<label for="plastic">Пластиковые уголки, ручки, крепежи.</label>	
+				</div>	
+				<div class="metal">		
+					<input id="metal" class="cursor" value="100" name="complect" type="radio">	
+					<label for="metal">Металлические уголки, ручки, крепежи.</label>
+				</div>
+			</div>
+
+			<div class="installation">
+				<h3>Установка:</h3>
+				<input id="installation"  class="cursor" name="installation" type="checkbox" checked>	
+			</div>
+
+			<div class="number_wrap">
+				<h3>Кол-во:</h3>
+				<div class="number">
+					<span class="minus cursor">-</span>
+					<input id="quantity" type="text" value="1" size="5"/>
+					<span class="plus cursor">+</span>
+				</div>
+			</div>
+
+			<div class="resultat">
+				<h3>Результат:</h3>
+				<div class="wrap_result"><span id="rezultat">0</span> руб.</div>
+			</div>
+
+		</div> 
+		<div class="box_img">
+			<img src="img/moskitka.jpg" height="365" width="358" alt="">
 		</div>
 
-		<h3>Результат</h3>
-
-		<div class="wrap_result"><span id="rezultat">0</span>руб</div>
-	</div> 
-
-
+	</div>	
 
 
 	<script src="libs/jquery/jquery-1.11.2.min.js"></script>

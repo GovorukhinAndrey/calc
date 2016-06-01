@@ -49,6 +49,8 @@ $(document).ready(function() {
 	},
 	];
 
+	// + и - на кол-ве
+
 	$('.minus').click(function () {
 	    var quantity = $(this).parent().find('input');
 	    var count = parseInt(quantity.val()) - 1;
@@ -65,26 +67,26 @@ $(document).ready(function() {
 	});
 
 
-
+	// активные/активные/ неактивные чекбоксы
 
 	 function dis(){
 
-	 if($("#expanding").prop('checked')){
-           	$('#brownColor, #anticat, #photoPrint').prop("disabled", true);
-            //  $('#fiberglass').prop("checked", true);
-            // $('#whiteColor').prop("checked", true);	
-      } else {
-      	$('#brownColor, #anticat, #photoPrint').prop("disabled", false)
-      };            
+		 if($("#expanding").prop('checked')){
+	           	$('#brownColor, #anticat, #photoPrint').prop("disabled", true);
+	            //  $('#fiberglass').prop("checked", true);
+	            // $('#whiteColor').prop("checked", true);	
+	      } else {
+	      	$('#brownColor, #anticat, #photoPrint').prop("disabled", false)
+	      };            
 	 };
 
 
 	function buildOrderDescription(){
 		 var Width = $("#width").val(),
 		     Height = $("#height").val();
-		inputErrorH();
-		inputErrorW();
-		dis();
+		inputErrorH(); // ограничитель высоты
+		inputErrorW();	// ограничитель ширины
+		dis();					// активные/ неактивные чекбоксы
 		var orderDescription = {
 			  	width: Width,										//ширина
 			    height: Height,									// высота		    
@@ -92,7 +94,7 @@ $(document).ready(function() {
 			    netType: $('input[name="netType"]:checked').val(),	// тип
 			    canvasType: $('input[name="canvasType"]:checked').val(), // полотно
 			    installation: ($('#installation').is(':checked')) ? 200 : 0, //установка
-			    complectCost: $('input[name="complect"]:checked').val(),
+			    complectCost: $('input[name="complect"]:checked').val(),    // комплект
 			    quantity: $('#quantity').val(),		// кол-во
 			    getArea: function()		
 			    {
@@ -115,7 +117,7 @@ $(document).ready(function() {
 	   	 	Width = $("#width").val();
 	   	 	$('.width-error').html("");
 	   	 }
-	   	 // return false;
+	   	  // return false;
 	   };
 	  /* проверяем размеры высоты */
 	   function inputErrorH() {
@@ -131,13 +133,13 @@ $(document).ready(function() {
 	   	 	Height = $("#height").val();
 	   	 	$('.height-error').html("");
 	   	 }
-	   	 // return false;
+	   	  // return false;
 	   };	   
 
 	  return orderDescription;
 	};
 
-
+	// фильтруем чекбоксы
 	function findPriceItem(priceList, orderDescription){
 		var item = priceList.filter(function(priceItem){
 	  	return priceItem.color == orderDescription.color
@@ -157,7 +159,7 @@ $(document).ready(function() {
 		console.log(priceItem);
 		console.log(orderDescription.getArea());
 		console.log(priceItem.cost);
-		var cost = (((+orderDescription.getArea() * +priceItem.cost) + +orderDescription.installation + +orderDescription.complectCost ) * +orderDescription.quantity);
+		var cost = (((+orderDescription.getArea() * +priceItem.cost) + +orderDescription.installation + +orderDescription.complectCost ) * +orderDescription.quantity).toFixed();
 		console.log(cost);
 
 		var	result = $("#rezultat"); // результат
