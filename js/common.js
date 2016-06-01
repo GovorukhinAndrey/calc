@@ -82,13 +82,12 @@ $(document).ready(function() {
 	function buildOrderDescription(){
 		 var Width = $("#width").val(),
 		     Height = $("#height").val();
-		//input_error();
+		inputErrorH();
+		inputErrorW();
 		dis();
 		var orderDescription = {
 			  	width: Width,										//ширина
-			    height: Height,									// высота
-			  	// width: $("#width").val(),										//ширина
-			   //  height: $("#height").val(),									// высота			    
+			    height: Height,									// высота		    
 			    color: $('input[name="netColor"]:checked').val(),  //цвет
 			    netType: $('input[name="netType"]:checked').val(),	// тип
 			    canvasType: $('input[name="canvasType"]:checked').val(), // полотно
@@ -97,35 +96,44 @@ $(document).ready(function() {
 			    quantity: $('#quantity').val(),		// кол-во
 			    getArea: function()		
 			    {
-			    	return parseFloat((+this.height * +this.width) /10000).toFixed(2); //находим площадь и переводим в м2, округляем до сотых
+			    	var area = parseFloat((+this.height * +this.width) /10000).toFixed(2); //находим площадь и переводим в м2, округляем до сотых
+			    	return area < 1 ? 1 : area;
 			    }
 	  		};
 
-	  /* проверяем размеры */
-	   function input_error() {
-	   	if ( Width  > $("#width").val(maxWidth)){
-	   		alert(Width),
-	   		Width = maxWidth,
-	   		alert(orderDescription.width);
-	   	 } 
-	   	//if (Width  < $("#width").val(minWidth)){
-	   	// 	Width = minWidth;
-	   	// 	alert(orderDescription.width);
-	   	// } 
+	  /* проверяем размеры ширины */
+	   function inputErrorW() {
+	   	if ( Width  > maxWidth){
+	   		Width = $("#width").val(180);
+	   		Width = maxWidth;
+	   		$('.width-error').html("Ширина не может быть больше 180 см");
+	   	 } else if (Width < minWidth) {
+	   	 	Width = $("#width").val(20);
+	   	 	Width = minWidth;
+	   	 	$('.width-error').html("Ширина не может быть меньше 20 см");
+	   	 } else {
+	   	 	Width = $("#width").val();
+	   	 	$('.width-error').html("");
+	   	 }
+	   	 // return false;
 	   };
+	  /* проверяем размеры высоты */
+	   function inputErrorH() {
+	   	 if (Height < minHeight) {
+	   	 	Height = $("#height").val(20);
+	   	 	Height = minHeight;
+	   	 	$('.height-error').html("Высота не может быть меньше 20 см");
+	   	 } else  if (Height > maxHeight) {
+	   	 	Height = $("#height").val(180);
+	   	 	Height = maxHeight;
+	   	 	$('.height-error').html("Высота не может быть больше 180 см");
+	   	 } else {
+	   	 	Height = $("#height").val();
+	   	 	$('.height-error').html("");
+	   	 }
+	   	 // return false;
+	   };	   
 
-
-//  округляем площадь если меньше 1м2
-	   function Square() {
-			if(orderDescription.getArea() < minSquare){
-				 Width = $("#width").val(100);
-				 Height = $("#height").val(100);
-				// orderDescription.width = $("#width").val(100);
-				// orderDescription.height = $("#height").val(100);									
-				alert("площадь равна 1м2");
-			};
-	   };
-	  Square();
 	  return orderDescription;
 	};
 
